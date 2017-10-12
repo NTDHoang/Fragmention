@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:icon="@drawable/ic_home_white_24dp"
+            android:id="@string/home"/>
+        <item
+            android:icon="@drawable/ic_discover_white_24dp"
+            android:id="@string/discover"/>
+        <item
+            android:icon="@drawable/ic_message_white_24dp"
+            android:id="@string/shop"/>
+    </group>
+
+    <item android:id="@string/system">
+        <menu>
+            <item
+                android:icon="@drawable/ic_discover_white_24dp"
+                android:id="@string/login"/>
+        </menu>
+    </item>
+
+    <item android:id="@string/swipe">
+        <menu>
+            <item
+                android:icon="@drawable/ic_touch_app_white_24dp"
+                android:id="@string/go_swipe_back"/>
+        </menu>
+    </item>
+</menu>
