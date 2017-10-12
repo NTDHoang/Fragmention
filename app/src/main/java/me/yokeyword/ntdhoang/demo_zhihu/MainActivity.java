@@ -18,7 +18,7 @@ import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.fourth.child.MeFragment;
 import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.second.ZhihuSecondFragment;
 import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.second.child.ViewPagerFragment;
 import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.third.ZhihuThirdFragment;
-import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.third.child.ShopFragment;
+import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.third.child.child.OtherPagerFragment;
 import me.yokeyword.ntdhoang.demo_zhihu.ui.view.BottomBar;
 import me.yokeyword.ntdhoang.demo_zhihu.ui.view.BottomBarTab;
 
@@ -98,7 +98,7 @@ public class MainActivity extends SupportActivity implements BaseMainFragment.On
                     } else if (currentFragment instanceof ZhihuSecondFragment) {
                         currentFragment.popToChild(ViewPagerFragment.class, false);
                     } else if (currentFragment instanceof ZhihuThirdFragment) {
-                        currentFragment.popToChild(ShopFragment.class, false);
+                        currentFragment.popToChild(OtherPagerFragment.class, false);
                     } else if (currentFragment instanceof ZhihuFourthFragment) {
                         currentFragment.popToChild(MeFragment.class, false);
                     }

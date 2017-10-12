@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,7 @@ public class FirstPagerFragment extends SupportFragment implements SwipeRefreshL
     private int mScrollTotal;
     private String[] mTitles;
     private String[] mContents;
+    private SearchView mSearch;
 
     public static FirstPagerFragment newInstance() {
 
@@ -57,6 +59,13 @@ public class FirstPagerFragment extends SupportFragment implements SwipeRefreshL
     private void initView(View view) {
         mRecy = (RecyclerView) view.findViewById(R.id.recy);
         mRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.refresh_layout);
+
+        mSearch = (SearchView) view.findViewById(R.id.search);
+        mSearch.setActivated(true);
+        mSearch.setQueryHint("Type your keyword here");
+        mSearch.onActionViewExpanded();
+        mSearch.setIconified(false);
+        mSearch.clearFocus();
 
         mTitles = getResources().getStringArray(R.array.array_title);
         mContents = getResources().getStringArray(R.array.array_content);
@@ -97,6 +106,19 @@ public class FirstPagerFragment extends SupportFragment implements SwipeRefreshL
                 } else {
                     mAtTop = false;
                 }
+            }
+        });
+
+        mSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                mAdapter.getFilter().filter(newText);
+                return false;
             }
         });
     }

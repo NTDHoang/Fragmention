@@ -1,4 +1,4 @@
-package me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.third.child;
+package me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.second.child.childpager;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -19,15 +19,13 @@ import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.third.child.child.MenuListFr
 /**
  * Created by YoKeyword on 16/2/4.
  */
-public class ShopFragment extends SupportFragment {
-    public static final String TAG = ShopFragment.class.getSimpleName();
+public class GemFragment extends SupportFragment {
+    public static final String TAG = GemFragment.class.getSimpleName();
 
-    private Toolbar mToolbar;
-
-    public static ShopFragment newInstance() {
+    public static GemFragment newInstance() {
         Bundle args = new Bundle();
 
-        ShopFragment fragment = new ShopFragment();
+        GemFragment fragment = new GemFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -41,10 +39,6 @@ public class ShopFragment extends SupportFragment {
     }
 
     private void initView(View view, Bundle savedInstanceState) {
-        mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
-
-        mToolbar.setTitle(R.string.shop);
-
         if (findChildFragment(MenuListFragment.class) == null) {
             ArrayList<String> listMenus = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.array_menu)));
             MenuListFragment menuListFragment = MenuListFragment.newInstance(listMenus);

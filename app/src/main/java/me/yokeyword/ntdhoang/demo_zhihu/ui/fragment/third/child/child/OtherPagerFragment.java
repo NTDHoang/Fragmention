@@ -1,7 +1,8 @@
-package me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.second.child.childpager;
+package me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.third.child.child;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,8 @@ import me.yokeyword.ntdhoang.R;
  */
 public class OtherPagerFragment extends SupportFragment {
     private static final String ARG_TYPE = "arg_type";
+
+    private Toolbar mToolbar;
 
     private String mTitle;
 
@@ -42,7 +45,24 @@ public class OtherPagerFragment extends SupportFragment {
     }
 
     private void initView(View view) {
+        mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
+
+        mToolbar.setTitle(R.string.str_youtube);
+
         TextView tvTitle = (TextView) view.findViewById(R.id.tv_title);
         tvTitle.setText(mTitle);
+    }
+
+
+    /**
+     * 替换加载 内容Fragment
+     *
+     * @param fragment
+     */
+    public void switchContentFragment(ContentFragment fragment) {
+        SupportFragment contentFragment = findChildFragment(ContentFragment.class);
+        if (contentFragment != null) {
+            contentFragment.replaceFragment(fragment, false);
+        }
     }
 }

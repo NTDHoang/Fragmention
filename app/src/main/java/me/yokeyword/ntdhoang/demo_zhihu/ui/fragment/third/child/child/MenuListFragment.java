@@ -16,7 +16,7 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
 import me.yokeyword.ntdhoang.R;
 import me.yokeyword.ntdhoang.demo_zhihu.adapter.MenuAdapter;
 import me.yokeyword.ntdhoang.demo_zhihu.listener.OnItemClickListener;
-import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.third.child.ShopFragment;
+import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.second.child.childpager.GemFragment;
 
 /**
  * Created by YoKeyword on 16/2/9.
@@ -105,7 +105,7 @@ public class MenuListFragment extends SupportFragment {
 
         ContentFragment fragment = ContentFragment.newInstance(mMenus.get(position));
 
-        ((ShopFragment) getParentFragment()).switchContentFragment(fragment);
+        ((GemFragment) getParentFragment()).switchContentFragment(fragment);
     }
 
     @Override

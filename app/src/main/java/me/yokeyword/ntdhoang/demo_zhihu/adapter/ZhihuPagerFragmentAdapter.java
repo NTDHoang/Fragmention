@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.second.child.childpager.FirstPagerFragment;
-import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.second.child.childpager.OtherPagerFragment;
+import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.second.child.childpager.GemFragment;
 
 /**
  * Created by YoKeyword on 16/6/5.
@@ -23,7 +23,7 @@ public class ZhihuPagerFragmentAdapter extends FragmentPagerAdapter {
         if (position == 0) {
             return FirstPagerFragment.newInstance();
         } else {
-            return OtherPagerFragment.newInstance(mTitles[position]);
+            return GemFragment.newInstance();
         }
     }
 

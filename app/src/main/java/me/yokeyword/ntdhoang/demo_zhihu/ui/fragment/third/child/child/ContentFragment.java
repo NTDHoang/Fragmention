@@ -14,7 +14,7 @@ import me.yokeyword.fragmentation.anim.DefaultNoAnimator;
 import me.yokeyword.fragmentation.anim.FragmentAnimator;
 import me.yokeyword.ntdhoang.R;
 import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.CycleFragment;
-import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.third.child.ShopFragment;
+import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.second.child.childpager.GemFragment;
 
 /**
  * Created by YoKeyword on 16/2/9.
@@ -70,8 +70,8 @@ public class ContentFragment extends SupportFragment {
             @Override
             public void onClick(View v) {
                 // 和MsgFragment同级别的跳转 交给MsgFragment处理
-                if (getParentFragment() instanceof ShopFragment) {
-                    ((ShopFragment) getParentFragment()).start(CycleFragment.newInstance(1));
+                if (getParentFragment() instanceof GemFragment) {
+                    ((GemFragment) getParentFragment()).start(CycleFragment.newInstance(1));
                 }
             }
         });

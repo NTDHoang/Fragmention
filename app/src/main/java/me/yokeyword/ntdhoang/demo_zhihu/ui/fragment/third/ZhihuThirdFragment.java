@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import me.yokeyword.ntdhoang.R;
 import me.yokeyword.ntdhoang.demo_zhihu.base.BaseMainFragment;
-import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.third.child.ShopFragment;
+import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.third.child.child.OtherPagerFragment;
 
 /**
  * Created by YoKeyword on 16/6/3.
@@ -35,9 +35,9 @@ public class ZhihuThirdFragment extends BaseMainFragment {
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
 
-        if (findChildFragment(ShopFragment.class) == null) {
+        if (findChildFragment(OtherPagerFragment.class) == null) {
             // ShopFragment是flow包里的
-            loadRootFragment(R.id.fl_third_container, ShopFragment.newInstance());
+            loadRootFragment(R.id.fl_third_container, OtherPagerFragment.newInstance("TEST"));
         }
     }
 }

@@ -12,7 +12,7 @@
     <string name="swipe">SwipeBack</string>
     <string name="go_swipe_back">SwipeBackActivity+Fragment</string>
 
-    <string name="recommend">Recommend</string>
+    <string name="Counter">Counter pick</string>
     <string name="hot">Hot</string>
     <string name="favorite">Favorite</string>
 
@@ -203,5 +203,7 @@
     <string name="pref_key_transition_time" translatable="false">pref_key_transition_time</string>
 
     <string name="mi_rate_on_github">Rate on GitHub</string>
+
+    <string name="str_youtube">Youtube Channel</string>
 
 </resources>
