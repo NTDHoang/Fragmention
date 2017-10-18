@@ -47,4 +47,11 @@
         <item name="android:clickable">true</item>
         <item name="android:background">?android:selectableItemBackground</item>
     </style>
+
+
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/zoom_out</item>
+        <item name="android:windowExitAnimation">@anim/fadeout</item>
+    </style>
+
 </resources>

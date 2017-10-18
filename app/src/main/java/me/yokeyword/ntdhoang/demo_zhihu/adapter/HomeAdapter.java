@@ -22,6 +22,7 @@ import me.yokeyword.ntdhoang.demo_zhihu.listener.OnItemClickListener;
  */
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> implements Filterable {
     private List<Article> mItems = new ArrayList<>();
+    private List<Article> mItemsPure = new ArrayList<>();
     private LayoutInflater mInflater;
     ValueFilter valueFilter;
     private OnItemClickListener mClickListener;
@@ -33,6 +34,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
     public void setDatas(List<Article> items) {
         mItems.clear();
         mItems.addAll(items);
+        mItemsPure = mItems;
     }
 
     @Override
@@ -82,16 +84,16 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
 
             if (constraint != null && constraint.length() > 0) {
                 List<Article> filterList = new ArrayList<>();
-                for (int i = 0; i < mItems.size(); i++) {
-                    if ((mItems.get(i).getTitle().toUpperCase()).contains(constraint.toString().toUpperCase())) {
-                        filterList.add(mItems.get(i));
+                for (int i = 0; i < mItemsPure.size(); i++) {
+                    if ((mItemsPure.get(i).getTitle().toUpperCase()).contains(constraint.toString().toUpperCase())) {
+                        filterList.add(mItemsPure.get(i));
                     }
                 }
                 results.count = filterList.size();
                 results.values = filterList;
             } else {
-                results.count = mItems.size();
-                results.values = mItems;
+                results.count = mItemsPure.size();
+                results.values = mItemsPure;
             }
             return results;
 

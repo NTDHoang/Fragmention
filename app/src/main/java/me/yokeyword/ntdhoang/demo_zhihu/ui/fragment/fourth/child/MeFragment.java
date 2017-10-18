@@ -15,7 +15,11 @@ import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.fourth.ZhihuFourthFragment;
  * Created by YoKeyword on 16/6/6.
  */
 public class MeFragment extends SupportFragment {
-    private TextView mTvBtnSettings;
+    private TextView mTvBtnInfo;
+    private TextView mTvBtnRate;
+    private TextView mTvBtnBugs;
+    private TextView mTvBtnQuits;
+
 
     public static MeFragment newInstance() {
 
@@ -35,11 +39,35 @@ public class MeFragment extends SupportFragment {
     }
 
     private void initView(View view) {
-        mTvBtnSettings = (TextView) view.findViewById(R.id.tv_btn_settings);
-        mTvBtnSettings.setOnClickListener(new View.OnClickListener() {
+        mTvBtnInfo = (TextView) view.findViewById(R.id.tv_btn_info);
+        mTvBtnInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                start(SettingsFragment.newInstance());
+
+            }
+        });
+
+        mTvBtnRate = (TextView) view.findViewById(R.id.tv_btn_info);
+        mTvBtnRate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        mTvBtnBugs = (TextView) view.findViewById(R.id.tv_btn_info);
+        mTvBtnBugs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        mTvBtnQuits = (TextView) view.findViewById(R.id.tv_btn_info);
+        mTvBtnQuits.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_rounded_white_border"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_small">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_normal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/lblTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_medium"
+                    android:gravity="center"
+                    android:text="@string/cmn_4round"
+                    android:textSize="@dimen/text_normal" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <FrameLayout
+            android:id="@+id/layoutTop"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:background="@color/colorPrimary"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/background">
+
+            </ImageView>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#0000">
+
+                <CheckBox
+                    android:id="@+id/cbTopLeft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="35dp" />
+
+                <TextView
+                    android:id="@+id/txtTopLeft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="43dp"
+                    android:layout_toRightOf="@id/cbTopLeft"
+                    android:text="TEST" />
+
+
+                <CheckBox
+                    android:id="@+id/cbTopRight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="225dp"
+                    android:layout_marginTop="35dp" />
+
+                <TextView
+                    android:id="@+id/txtTopRight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="43dp"
+                    android:layout_marginTop="43dp"
+                    android:layout_toRightOf="@id/cbTopRight"
+                    android:text="TEST" />
+
+
+                <CheckBox
+                    android:id="@+id/cbBotLeft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="60dp"
+                    android:layout_marginLeft="30dp" />
+
+                <TextView
+                    android:id="@+id/txtBotLeft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="68dp"
+                    android:layout_toRightOf="@id/cbBotLeft"
+                    android:text="TEST" />
+
+
+                <CheckBox
+                    android:id="@+id/cbBotRight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="60dp"
+                    android:layout_marginLeft="225dp" />
+
+                <TextView
+                    android:id="@+id/txtBotRight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="68dp"
+                    android:layout_toRightOf="@id/cbBotRight"
+                    android:text="TEST" />
+
+            </RelativeLayout>
+
+
+        </FrameLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layoutButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_normal"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/btnActionCancel"
+                    style="@style/Button.Dialog"
+                    android:layout_width="110dp"
+                    android:layout_height="@dimen/btn_height_medium"
+                    android:background="@drawable/bg_common_round_grey_lighter"
+                    android:text="@string/cmn_cancel"
+                    android:textColor="@color/cmn_text_black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/btnSettle"
+                    style="@style/Button.Dialog.Green"
+                    android:layout_width="110dp"
+                    android:layout_height="@dimen/btn_height_medium"
+                    android:text="@string/cmn_ok" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

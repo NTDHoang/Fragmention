@@ -7,6 +7,12 @@
 
     <color name="tab_unselect">#c9c9c9</color>
     <color name="bg_btn">#dadada</color>
+    <color name="cmn_transparent">#00000000</color>
+
+
+    <color name="gem_red">#940000</color>
+    <color name="gem_purler">#5e145a</color>
+    <color name="gem_green">#196600</color>
 
 
     <color name="grayIconTint">#727272</color>

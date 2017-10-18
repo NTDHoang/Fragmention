@@ -160,21 +160,16 @@
     </string-array>
 
     <string-array name="array_menu">
-        <item>Ranking</item>
-        <item>Menu1</item>
-        <item>Menu2</item>
-        <item>Menu3</item>
-        <item>Menu4</item>
-        <item>Menu5</item>
-        <item>Menu6</item>
-        <item>Menu7</item>
-        <item>Menu8</item>
-        <item>Menu9</item>
-        <item>Menu10</item>
-        <item>Menu11</item>
-        <item>Menu12</item>
-        <item>Menu13</item>
-        <item>Menu14</item>
+        <item>All</item>
+        <item>Red1</item>
+        <item>Red2</item>
+        <item>Red3</item>
+        <item>Purler1</item>
+        <item>Purler2</item>
+        <item>Purler1</item>
+        <item>Green1</item>
+        <item>Green2</item>
+        <item>Green3</item>
     </string-array>
 
 
@@ -205,5 +200,31 @@
     <string name="mi_rate_on_github">Rate on GitHub</string>
 
     <string name="str_youtube">Youtube Channel</string>
+
+    <string name="watch_on_youtube">Xem trên YouTube</string>
+    <string name="str_four_rate">Đánh giá ứng dụng</string>
+    <string name="str_four_bug">Thông báo lỗi</string>
+    <string name="str_four_info">Thông tin nhà phát triển</string>
+    <string name="str_four_quit">Thoát</string>
+
+    <string name="dialog_sorry">Xin lỗi!</string>
+    <string name="dialog_sorry_content">Tôi cần gắn quảng cáo để thực hiện tiếp công việc phát triển ứng dụng của mình. Thành thật xin lỗi bạn vì sự bắt tiện này!</string>
+
+    <string name="str_rating_app">Đánh giá ứng dụng</string>
+    <string name="str_report_bug">Báo cáo lỗi</string>
+    <string name="str_content_bug">Nội dung</string>
+
+    <string name="str_content_notification">Giữ notification để ứng dụng luôn hoạt động(Click vào để tắt)</string>
+
+
+    <string name="str_rating_content1">Cảm nhận của bạn về ứng dụng</string>
+    <string name="str_rating_content2">Lúc khác</string>
+    <string name="str_rating_content3">Gửi feed</string>
+    <string name="str_rating_content4">Chúng tôi cần phát triển thêm điều gì?</string>
+
+    <string name="str_rating_content5">Cảm ơn vì sự giúp đỡ để làm ứng dụng tốt hơn</string>
+
+    <string name="str_rating_content6">Thông báo lỗi đến nhà phát triển</string>
+
 
 </resources>
