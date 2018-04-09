@@ -23,11 +23,11 @@ import java.util.List;
 import me.yokeyword.fragmentation.SupportFragment;
 import me.yokeyword.ntdhoang.R;
 import me.yokeyword.ntdhoang.demo_zhihu.MainActivity;
-import me.yokeyword.ntdhoang.demo_zhihu.adapter.FirstHomeAdapter;
-import me.yokeyword.ntdhoang.demo_zhihu.entity.Article;
-import me.yokeyword.ntdhoang.demo_zhihu.event.TabSelectedEvent;
-import me.yokeyword.ntdhoang.demo_zhihu.helper.DetailTransition;
-import me.yokeyword.ntdhoang.demo_zhihu.listener.OnItemClickListener;
+import me.yokeyword.ntdhoang.demo_zhihu.ui.adapter.FirstHomeAdapter;
+import me.yokeyword.ntdhoang.demo_zhihu.data.entity.Article;
+import me.yokeyword.ntdhoang.demo_zhihu.assistant.event.TabSelectedEvent;
+import me.yokeyword.ntdhoang.demo_zhihu.assistant.helper.DetailTransition;
+import me.yokeyword.ntdhoang.demo_zhihu.assistant.listener.OnItemClickListener;
 
 /**
  * Created by YoKeyword on 16/6/5.

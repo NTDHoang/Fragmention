@@ -14,8 +14,8 @@ import me.yokeyword.fragmentation.SupportFragment;
 import me.yokeyword.fragmentation.anim.DefaultNoAnimator;
 import me.yokeyword.fragmentation.anim.FragmentAnimator;
 import me.yokeyword.ntdhoang.R;
-import me.yokeyword.ntdhoang.demo_zhihu.adapter.MenuAdapter;
-import me.yokeyword.ntdhoang.demo_zhihu.listener.OnItemClickListener;
+import me.yokeyword.ntdhoang.demo_zhihu.ui.adapter.MenuAdapter;
+import me.yokeyword.ntdhoang.demo_zhihu.assistant.listener.OnItemClickListener;
 import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.second.child.childpager.GemFragment;
 
 /**

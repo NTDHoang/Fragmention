@@ -190,6 +190,10 @@
     <string name="btn_smooth_scroll">Smooth scroll</string>
     <string name="btn_transition_time">Transition time</string>
 
+    <string name="btn_hero">Anh hùng</string>
+    <string name="btn_item">Trang bị</string>
+
+
     <string name="dialog_seekbar_transition_time">Item transition time in millis</string>
 
     <string name="msg_no_browser">No app found to open the url</string>

@@ -19,10 +19,10 @@ import java.util.List;
 import me.yokeyword.fragmentation.SupportFragment;
 import me.yokeyword.ntdhoang.R;
 import me.yokeyword.ntdhoang.demo_zhihu.MainActivity;
-import me.yokeyword.ntdhoang.demo_zhihu.adapter.HomeAdapter;
-import me.yokeyword.ntdhoang.demo_zhihu.entity.Article;
-import me.yokeyword.ntdhoang.demo_zhihu.event.TabSelectedEvent;
-import me.yokeyword.ntdhoang.demo_zhihu.listener.OnItemClickListener;
+import me.yokeyword.ntdhoang.demo_zhihu.ui.adapter.HomeAdapter;
+import me.yokeyword.ntdhoang.demo_zhihu.data.entity.Article;
+import me.yokeyword.ntdhoang.demo_zhihu.assistant.event.TabSelectedEvent;
+import me.yokeyword.ntdhoang.demo_zhihu.assistant.listener.OnItemClickListener;
 import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.second.child.DetailFragment;
 
 /**

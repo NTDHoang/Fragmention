@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import me.yokeyword.ntdhoang.R;
 import me.yokeyword.ntdhoang.demo_zhihu.base.BaseBackFragment;
-import me.yokeyword.ntdhoang.demo_zhihu.entity.Article;
+import me.yokeyword.ntdhoang.demo_zhihu.data.entity.Article;
 import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.CycleFragment;
 
 /**

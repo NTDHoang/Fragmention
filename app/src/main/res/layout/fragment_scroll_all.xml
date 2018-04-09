@@ -111,22 +111,22 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_smooth_scroll"
+            android:id="@+id/btn_hero"
             style="?android:borderlessButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/btn_smooth_scroll"
+            android:text="@string/btn_hero"
             android:textAllCaps="true"
             android:textColor="@color/shopAccent" />
 
         <Button
-            android:id="@+id/btn_transition_time"
+            android:id="@+id/btn_item"
             style="?android:borderlessButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/btn_transition_time"
+            android:text="@string/btn_item"
             android:textAllCaps="true"
             android:textColor="@color/shopAccent" />
 

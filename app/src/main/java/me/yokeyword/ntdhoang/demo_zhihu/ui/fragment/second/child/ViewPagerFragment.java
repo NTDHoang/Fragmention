@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import me.yokeyword.fragmentation.SupportFragment;
 import me.yokeyword.ntdhoang.R;
-import me.yokeyword.ntdhoang.demo_zhihu.adapter.ZhihuPagerFragmentAdapter;
+import me.yokeyword.ntdhoang.demo_zhihu.ui.adapter.ZhihuPagerFragmentAdapter;
 
 /**
  * Created by YoKeyword on 16/6/5.

@@ -1,10 +1,12 @@
 package me.yokeyword.ntdhoang;
 
 import android.app.Application;
-
+import android.content.Context;
 import me.yokeyword.fragmentation.Fragmentation;
 import me.yokeyword.fragmentation.helper.ExceptionHandler;
 import me.yokeyword.ntdhoang.demo_zhihu.base.DiscreteScrollViewOptions;
+import me.yokeyword.ntdhoang.demo_zhihu.di.AppComponent;
+import me.yokeyword.ntdhoang.demo_zhihu.di.DaggerAppComponent;
 
 /**
  * Created by YoKey on 16/11/23.
@@ -36,7 +38,14 @@ public class App extends Application {
                         // 以Bugtags为例子: 把捕获到的 Exception 传到 Bugtags 后台。
                         // Bugtags.sendException(e);
                     }
-                })
-                .install();
+                }).install();
+
+        component = DaggerAppComponent.builder().build();
+    }
+
+    private AppComponent component;
+
+    public static AppComponent getComponent(Context context) {
+        return ((App) context.getApplicationContext()).component;
     }
 }
