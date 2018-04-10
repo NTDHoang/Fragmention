@@ -65,9 +65,7 @@ public class HerosScrollFragment extends SupportFragment
         rateItemButton = (ImageView) view.findViewById(R.id.item_btn_rate);
 
         data = new ArrayList<>();
-        data.add(new Hero("1", "Vanheil"));
-        data.add(new Hero("2", "Violot"));
-
+        data.add(new Hero());
         itemPicker = (DiscreteScrollView) view.findViewById(R.id.item_picker);
         itemPicker.setOrientation(Orientation.HORIZONTAL);
         itemPicker.addOnItemChangedListener(this);

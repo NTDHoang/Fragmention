@@ -1,6 +1,7 @@
 package me.yokeyword.ntdhoang.demo_zhihu;
 
 import android.Manifest;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,17 +11,24 @@ import android.support.v4.app.ActivityCompat.OnRequestPermissionsResultCallback;
 import android.util.Log;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import javax.inject.Inject;
 import me.yokeyword.fragmentation.SupportActivity;
 import me.yokeyword.fragmentation.SupportFragment;
+import me.yokeyword.ntdhoang.App;
 import me.yokeyword.ntdhoang.R;
 import me.yokeyword.ntdhoang.demo_zhihu.assistant.event.TabSelectedEvent;
 import me.yokeyword.ntdhoang.demo_zhihu.assistant.helper.DownloadFile;
 import me.yokeyword.ntdhoang.demo_zhihu.assistant.rx2.DisposableManager;
+import me.yokeyword.ntdhoang.demo_zhihu.assistant.utils.ParseWebData;
 import me.yokeyword.ntdhoang.demo_zhihu.base.BaseMainFragment;
+import me.yokeyword.ntdhoang.demo_zhihu.data.entity.Hero;
+import me.yokeyword.ntdhoang.demo_zhihu.di.LeagueModule;
 import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.first.ZhihuFirstFragment;
 import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.first.child.FirstHomeFragment;
 import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.fourth.ZhihuFourthFragment;
@@ -31,6 +39,8 @@ import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.third.ZhihuThirdFragment;
 import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.third.child.child.OtherPagerFragment;
 import me.yokeyword.ntdhoang.demo_zhihu.ui.view.BottomBar;
 import me.yokeyword.ntdhoang.demo_zhihu.ui.view.BottomBarTab;
+import me.yokeyword.ntdhoang.demo_zhihu.ui.viewmodel.LeagueViewModel;
+import me.yokeyword.ntdhoang.demo_zhihu.ui.viewmodel.LeagueViewModelFactory;
 import org.greenrobot.eventbus.EventBus;
 
 /**
@@ -48,6 +58,11 @@ public class MainActivity extends SupportActivity
     private SupportFragment[] mFragments = new SupportFragment[4];
 
     private BottomBar mBottomBar;
+
+    @Inject
+    LeagueViewModelFactory leagueViewModelFactory;
+
+    private LeagueViewModel leagueViewModel;
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions,
@@ -85,7 +100,27 @@ public class MainActivity extends SupportActivity
             mFragments[FOURTH] = findFragment(ZhihuFourthFragment.class);
         }
 
+        App.getComponent(getApplicationContext())
+                .getLeagueComponent(new LeagueModule(getApplicationContext()))
+                .inject(this);
+
+        //instantiate view model
+        leagueViewModel =
+                ViewModelProviders.of(this, leagueViewModelFactory).get(LeagueViewModel.class);
+
         initView();
+    }
+
+    static Observable<String> sampleObservable(LeagueViewModel leagueViewModel) {
+        return Observable.defer(() -> {
+            // Do some long running operation
+            try {
+                ParseWebData.loader(leagueViewModel);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return Observable.just("");
+        });
     }
 
     @Override
@@ -93,17 +128,48 @@ public class MainActivity extends SupportActivity
         super.onResume();
         //TODO
 
+        DisposableManager.add(sampleObservable(leagueViewModel).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableObserver<String>() {
+                    @Override
+                    public void onComplete() {
+
+                        leagueViewModel.getHeroById("2")
+                                .subscribeOn(Schedulers.computation())
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribe(new Consumer<Hero>() {
+                                    @Override
+                                    public void accept(Hero coupon) throws Exception {
+                                        Log.d("BINH",
+                                                "accept() called with: coupon = [" + coupon.getName() + "]");
+                                    }
+                                }, throwable -> Log.e("MainActivity", "exception getOneCoupon"));
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                    }
+
+                    @Override
+                    public void onNext(String list) {
+
+                    }
+                }));
+
         if (Build.VERSION.SDK_INT >= 23) {
             //do your check here
             if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     == PackageManager.PERMISSION_GRANTED) {
                 Log.v("BINH", "Permission is granted");
-                loader();
+                //loader();
             } else {
                 ActivityCompat.requestPermissions(this,
                         new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE }, REQUEST_CODE);
             }
         }
+
+
     }
 
     private void initView() {
@@ -183,6 +249,10 @@ public class MainActivity extends SupportActivity
     protected void onDestroy() {
         super.onDestroy();
         //        EventBus.getDefault().unregister(this);
+    }
+
+    private void loader2() {
+
     }
 
     private void loader() {
