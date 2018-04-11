@@ -2,11 +2,11 @@ package me.yokeyword.ntdhoang.demo_zhihu.ui.viewmodel;
 
 import android.arch.lifecycle.ViewModel;
 import io.reactivex.Flowable;
-import io.reactivex.Single;
 import io.reactivex.disposables.CompositeDisposable;
 import java.util.List;
 import me.yokeyword.ntdhoang.demo_zhihu.data.LocalRepository;
 import me.yokeyword.ntdhoang.demo_zhihu.data.entity.Hero;
+import me.yokeyword.ntdhoang.demo_zhihu.data.entity.Item;
 
 public class LeagueViewModel extends ViewModel {
 
@@ -23,13 +23,6 @@ public class LeagueViewModel extends ViewModel {
         return localRepository.getHeros();
     }
 
-    public Single<Hero> getHeroById(String id) {
-        return localRepository.getHeroById(Integer.parseInt(id));
-    }
-
-    public Single<Hero> getOneLeague() {
-        return localRepository.getOneHero();
-    }
 
     public void insertLeague(Hero League) {
         localRepository.insertHero(League);
@@ -37,6 +30,18 @@ public class LeagueViewModel extends ViewModel {
 
     public void deleteAllLeagues() {
         localRepository.deleteAllHeros();
+    }
+
+    public Flowable<List<Item>> getItems() {
+        return localRepository.getItems();
+    }
+
+    public void insertItem(Item item) {
+        localRepository.insertItem(item);
+    }
+
+    public void deleteAllItems() {
+        localRepository.deleteAllItems();
     }
 
     @Override

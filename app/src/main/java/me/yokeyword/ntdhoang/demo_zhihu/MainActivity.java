@@ -11,23 +11,18 @@ import android.support.v4.app.ActivityCompat.OnRequestPermissionsResultCallback;
 import android.util.Log;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
 import javax.inject.Inject;
 import me.yokeyword.fragmentation.SupportActivity;
 import me.yokeyword.fragmentation.SupportFragment;
 import me.yokeyword.ntdhoang.App;
 import me.yokeyword.ntdhoang.R;
 import me.yokeyword.ntdhoang.demo_zhihu.assistant.event.TabSelectedEvent;
-import me.yokeyword.ntdhoang.demo_zhihu.assistant.helper.DownloadFile;
 import me.yokeyword.ntdhoang.demo_zhihu.assistant.rx2.DisposableManager;
 import me.yokeyword.ntdhoang.demo_zhihu.assistant.utils.ParseWebData;
 import me.yokeyword.ntdhoang.demo_zhihu.base.BaseMainFragment;
-import me.yokeyword.ntdhoang.demo_zhihu.data.entity.Hero;
 import me.yokeyword.ntdhoang.demo_zhihu.di.LeagueModule;
 import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.first.ZhihuFirstFragment;
 import me.yokeyword.ntdhoang.demo_zhihu.ui.fragment.first.child.FirstHomeFragment;
@@ -70,8 +65,7 @@ public class MainActivity extends SupportActivity
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             Log.v("BINH", "Permission: " + permissions[0] + "was " + grantResults[0]);
-            //resume tasks needing this permission
-            loader();
+            //resume tasks needing this permissio
         }
     }
 
@@ -111,40 +105,18 @@ public class MainActivity extends SupportActivity
         initView();
     }
 
-    static Observable<String> sampleObservable(LeagueViewModel leagueViewModel) {
-        return Observable.defer(() -> {
-            // Do some long running operation
-            try {
-                ParseWebData.loader(leagueViewModel);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return Observable.just("");
-        });
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        //TODO
-
-        DisposableManager.add(sampleObservable(leagueViewModel).subscribeOn(Schedulers.io())
+    public void getHeroTable() {
+        leagueViewModel.deleteAllLeagues();
+        DisposableManager.add(heroObservable(leagueViewModel).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableObserver<String>() {
                     @Override
                     public void onComplete() {
-
-                        leagueViewModel.getHeroById("2")
-                                .subscribeOn(Schedulers.computation())
-                                .observeOn(AndroidSchedulers.mainThread())
-                                .subscribe(new Consumer<Hero>() {
-                                    @Override
-                                    public void accept(Hero coupon) throws Exception {
-                                        Log.d("BINH",
-                                                "accept() called with: coupon = [" + coupon.getName() + "]");
-                                    }
-                                }, throwable -> Log.e("MainActivity", "exception getOneCoupon"));
-
+                        try {
+                            ParseWebData.loaderHeroImageSrc(leagueViewModel, MainActivity.this);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
 
                     @Override
@@ -156,20 +128,75 @@ public class MainActivity extends SupportActivity
 
                     }
                 }));
+    }
 
+    static Observable<String> heroObservable(LeagueViewModel leagueViewModel) {
+        return Observable.defer(() -> {
+            // Do some long running operation
+            try {
+                //TODO parser init hero table
+                ParseWebData.loaderHero(leagueViewModel);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return Observable.just("");
+        });
+    }
+
+    public void getItemTable() {
+        leagueViewModel.deleteAllItems();
+        DisposableManager.add(itemObservable(leagueViewModel).subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.io())
+                .subscribeWith(new DisposableObserver<String>() {
+                    @Override
+                    public void onComplete() {
+                        try {
+                            ParseWebData.loaderItemImageSrc(leagueViewModel, MainActivity.this);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                    }
+
+                    @Override
+                    public void onNext(String list) {
+                    }
+                }));
+    }
+
+    static Observable<String> itemObservable(LeagueViewModel leagueViewModel) {
+        return Observable.defer(() -> {
+            // Do some long running operation
+            try {
+                //TODO parser init hero table
+                ParseWebData.loaderItem(leagueViewModel);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return Observable.just("");
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //TODO
+        //getHeroTable();
+        getItemTable();
         if (Build.VERSION.SDK_INT >= 23) {
             //do your check here
             if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     == PackageManager.PERMISSION_GRANTED) {
                 Log.v("BINH", "Permission is granted");
-                //loader();
+                //loaderHero();
             } else {
                 ActivityCompat.requestPermissions(this,
                         new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE }, REQUEST_CODE);
             }
         }
-
-
     }
 
     private void initView() {
@@ -249,37 +276,5 @@ public class MainActivity extends SupportActivity
     protected void onDestroy() {
         super.onDestroy();
         //        EventBus.getDefault().unregister(this);
-    }
-
-    private void loader2() {
-
-    }
-
-    private void loader() {
-        List<String> tempString = Arrays.asList(
-                "https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&h=350",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg");
-
-        DisposableManager.add(Observable.defer(() -> Observable.just(tempString))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableObserver<List<String>>() {
-                    @Override
-                    public void onComplete() {
-                        Log.d("BINH", "onComplete() called");
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                    }
-
-                    @Override
-                    public void onNext(List<String> list) {
-                        for (String m : list) {
-                            new DownloadFile(MainActivity.this).execute(m);
-                            Log.d("BINH", "onNext() called with: list = [" + m + "]");
-                        }
-                    }
-                }));
     }
 }
